@@ -8,9 +8,9 @@ import (
 )
 
 const (
-	dayDuration   = 24 * time.Hour
-	monthDuration = 30 * dayDuration
-	yearDuration  = 365 * dayDuration
+	Day   = 24 * time.Hour
+	Month = 30 * Day
+	Year  = 365 * Day
 
 	dayUnit   = "day"
 	monthUnit = "month"
@@ -19,7 +19,7 @@ const (
 
 var (
 	units = []string{yearUnit, monthUnit, dayUnit}
-	durts = []time.Duration{yearDuration, monthDuration, dayDuration}
+	durts = []time.Duration{Year, Month, Day}
 )
 
 // BigDuration represents a duration in years (365 days), months (30 days), weeks and days
@@ -33,9 +33,9 @@ type BigDuration struct {
 
 // Duration returns equivalent time.Duration
 func (bd *BigDuration) Duration() time.Duration {
-	return time.Duration(bd.Years)*yearDuration +
-		time.Duration(bd.Months)*monthDuration +
-		time.Duration(bd.Days)*dayDuration +
+	return time.Duration(bd.Years)*Year +
+		time.Duration(bd.Months)*Month +
+		time.Duration(bd.Days)*Day +
 		bd.Nanos
 }
 
