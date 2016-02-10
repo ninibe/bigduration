@@ -4,8 +4,8 @@ Like time.Duration but with "year", "month" and "day" making the following assum
 
 ```go
 bigduration.Day   = 24 * time.Hour
-bigduration.Month = 30 * Day
-bigduration.Year  = 365 * Day
+bigduration.Month = 30 * bigduration.Day
+bigduration.Year  = 365 * bigduration.Day
 ```
 
 Check the [godocs](https://godoc.org/github.com/ninibe/bigduration)
