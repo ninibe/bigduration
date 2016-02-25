@@ -124,7 +124,13 @@ func ParseBigDuration(s string) (bd BigDuration, err error) {
 // From takes a time and returns the time adding the big duration in a calendar sensitive way
 // months are no longer 30 days but calendar months instead, leap years also accounted for.
 func (bd *BigDuration) From(u time.Time) time.Time {
-	return u.AddDate(bd.Years, bd.Months, bd.Days)
+	return u.AddDate(bd.Years, bd.Months, bd.Days).Add(bd.Nanos)
+}
+
+// Until takes a time and returns the time subtracting the big duration in a calendar sensitive way
+// months are no longer 30 days but calendar months instead, leap years also accounted for.
+func (bd *BigDuration) Until(u time.Time) time.Time {
+	return u.AddDate(-1*bd.Years, -1*bd.Months, -1*bd.Days).Add(-1 * bd.Nanos)
 }
 
 // Add returns the sum of both big durations
